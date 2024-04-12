@@ -36,20 +36,20 @@ uploaded_file = st.file_uploader("**Upload a Chest X-Ray Image**", type= ['png',
 if st.button('Запустить'):
     #os.system("rm 'democaries2.jpg'")
     #os.system("rmdir 'my_project'")
-    os.system("rm -rf 'my_project'")
+    os.system("rm -rf 'runs'")
     source2=get_image_path(uploaded_file)
     source3=get_image_name(uploaded_file)
    # print(source3)
     
-    (os.system("yolo task=detect mode=predict model='Caries-Detector-v0.6/best.pt' project='my_project' name='my_results' show=True conf=0.5 source=%s"% source3))
+    (os.system("python /content/Caries-Detector-v0.6/predict.py model='Caries-Detector-v0.6/best.pt' source=%s"% source3))
 #detect object
-
+#project='my_project' name='my_results' show=True conf=0.5
 #os.path.exists(file_path):
 
 col1, col2 = st.columns(2)
 
 if st.button('Отобразить'):
-    source_image=('/content/my_project/my_results/%s'% get_image_name(uploaded_file)) 
+    source_image=('/content/runs/detect/train/%s'% get_image_name(uploaded_file)) 
 
 # Adding image to the first column if image is uploaded
     with col1:
