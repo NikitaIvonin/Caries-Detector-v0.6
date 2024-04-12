@@ -6,7 +6,7 @@ import io
 
 
 
-st.title('Caries-Detector v0.5')
+st.title('Caries-Detector v0.6')
 
 st.header('Please upload an image')
 
